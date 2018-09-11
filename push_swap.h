@@ -21,4 +21,11 @@ typedef struct 		s_list
 	struct s_list 	*next
 }					t_list;
 
+void	push_a(t_list **stack_a, t_list **stack_b);
+void	sa_sb(t_list **stack_a, t_list **stack_b);
+void	swap(t_list *stack);
+void    rotate(t_list **stack_a);
+void    ra_rb(t_list **stack_a, t_list **stack_b);
+void    rev_rotate(t_list **stack);
+
 #endif
