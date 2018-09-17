@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void    rotate(t_list **stack_a)
+void    rotate(t_stack **stack)
 {
-    t_list *swap;
-    t_list *swap2;
+    t_stack *swap;
+    t_stack *swap2;
 
     if ((*stack) && (*stack)->next)
     {
-        swap_i = (*stack);
+        swap2 = (*stack);
         swap = (*stack);
         (*stack) = (*stack)->next;
         while(swap2->next)
@@ -29,16 +29,16 @@ void    rotate(t_list **stack_a)
     }
 }
 
-void    ra_rb(t_list **stack_a, t_list **stack_b)
+void    ra_rb(t_stack **stack_a, t_stack **stack_b)
 {
     rotate(stack_a);
     rotate(stack_b);
 }
 
-void    rev_rotate(t_list **stack)
+void    rev_rotate(t_stack **stack)
 {
-    t_list *swap;
-    t_list *swap2;
+    t_stack *swap;
+    t_stack *swap2;
          
     if ((*stack) && (*stack)->next)
     {
@@ -51,4 +51,10 @@ void    rev_rotate(t_list **stack)
 		swap->next = (*stack);
 		(*stack) = swap;
     }
+}
+
+void    rev_rotate_ab(t_stack **stack_a, t_stack **stack_b)
+{
+    rev_rotate(stack_a);
+    rev_rotate(stack_b);
 }
