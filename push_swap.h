@@ -11,26 +11,33 @@
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-# define DEFINE_PUSH_SWAP_H
+# define PUSH_SWAP_H
 # include "libft/libft.h"
 # include <stdlib.h>
 
 typedef struct 		s_stack
 {
 	int				num;
-	struct s_list 	*next
+	struct s_stack 	*next;
 }					t_stack;
 
-void	push_a(t_list **stack_a, t_list **stack_b);
-void	sa_sb(t_list **stack_a, t_list **stack_b);
-void	swap(t_list *stack);
-void    rotate(t_list **stack_a);
-void    ra_rb(t_list **stack_a, t_list **stack_b);
-void    rev_rotate(t_list **stack);
+void	push(t_stack **stack_a, t_stack *node);
+void	sa_sb(t_stack **stack_a, t_stack **stack_b);
+void	swap(t_stack **stack);
+void    rotate(t_stack **stack);
+void    ra_rb(t_stack **stack_a, t_stack **stack_b);
+void    rev_rotate(t_stack **stack);
 void	rev_rotate_ab(t_stack **stack_a, t_stack **stack_b);
+
 int		is_num(char *str);
-int		sorted(t_stack *stack)
-int		dup(t_satck *stack_a, int num);
-int		valid(t_stack *stack_a, long int num);
+int		sorted(t_stack *stack);
+int		has_dup(int ac, char **av);
+int		is_max(int ac, char **av);
+int		valid(int ac, char **av);
+
+t_stack	*make_stack(int ac, char **av);
+void	del_stack(t_stack *stack);
+void	print_stack(t_stack *stack);
+void	do_op(char *op, t_stack *stack_a, t_stack *stack_b);
 
 #endif

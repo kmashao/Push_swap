@@ -7,7 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:40:39 by kmashao           #+#    #+#             */
 /*   Updated: 2018/09/11 14:40:43 by kmashao          ###   ########.fr       */
-/*                                                                            */
+/*                        ck                                                    */
 /* ************************************************************************** */
 
 #include "push_swap.h"
@@ -31,20 +31,30 @@ void	sa_sb(t_stack **stack_a, t_stack **stack_b)
 	swap(stack_b);
 }
 
-void	push(t_stack **stack_a, t_stack **stack_b)
+t_stack		*pop(t_stack **stack)
 {
-	t_stack *swap;
+	t_stack *node;
 
-	if (*stack_b)
+	node = NULL;
+	if (stack && (*stack))
 	{
-		swap = (*stack_a);
-		(*stack_a) = (*stack_b);
-		(*stack_b) = (*stack_b)->next;
-		(*stack_a)->next = swap; 
+		node = (*stack);
+		(*stack) = (*stack)->next;
+		node->next = NULL;
+	}
+	return (node);
+}
+
+void	push(t_stack **stack, t_stack *node)
+{
+	if (stack && node)
+	{
+		node->next = (*stack);
+		(*stack) = node;
 	}
 }
 
-int		do_op(char *op, t_stack *stack_a, t_stack stack_b)
+void		do_op(char *op, t_stack *stack_a, t_stack *stack_b)
 {
 	if (!strcmp(op, "sa"))
 		swap(&stack_a);
@@ -62,14 +72,11 @@ int		do_op(char *op, t_stack *stack_a, t_stack stack_b)
 		rev_rotate(&stack_a);
 	else if (!strcmp(op, "rrb"))
 		rev_rotate(&stack_b);
-	else if (!strcmp(op, "rrr")
+	else if (!strcmp(op, "rrr"))
 		rev_rotate_ab(&stack_a, &stack_b);
 	else
 	{
-		ft_putsr_fd("error\n", 3);
+		ft_putstr_fd("error\n", 2);
 		exit(1);
-	}
-
-	
-	
+	}	
 }
