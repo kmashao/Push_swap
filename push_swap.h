@@ -37,7 +37,9 @@ int		valid(int ac, char **av);
 
 t_stack	*make_stack(int ac, char **av);
 void	del_stack(t_stack *stack);
-void	print_stack(t_stack *stack);
-void	do_op(char *op, t_stack *stack_a, t_stack *stack_b);
+void	print_stack(t_stack **stack);
+void	do_op(char *op, t_stack **stack_a, t_stack **stack_b);
+
+int		check_ops(char *op);
 
 #endif

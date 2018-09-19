@@ -54,29 +54,30 @@ void	push(t_stack **stack, t_stack *node)
 	}
 }
 
-void		do_op(char *op, t_stack *stack_a, t_stack *stack_b)
+void		do_op(char *op, t_stack **stack_a, t_stack **stack_b)
 {
-	if (!strcmp(op, "sa"))
-		swap(&stack_a);
-	else if (!strcmp(op, "sb"))
-		swap(&stack_b);
-	else if (!strcmp(op, "ss"))
-		sa_sb(&stack_a, &stack_b);
-	else if (!strcmp(op, "ra"))
-		rotate(&stack_a);
-	else if (!strcmp(op, "rb"))
-		rotate(&stack_b);
-	else if (!strcmp(op, "rr"))
-		ra_rb(&stack_a, &stack_b);
-	else if (!strcmp(op, "rra"))
-		rev_rotate(&stack_a);
-	else if (!strcmp(op, "rrb"))
-		rev_rotate(&stack_b);
-	else if (!strcmp(op, "rrr"))
-		rev_rotate_ab(&stack_a, &stack_b);
+	if (ft_strequ(op, "sa"))
+		swap(stack_a);
+	else if (ft_strequ(op, "sb"))
+		swap(stack_b);
+	else if (ft_strequ(op, "ss"))
+		sa_sb(stack_a, stack_b);
+	else if (ft_strequ(op, "ra"))
+		rotate(stack_a);
+	else if (ft_strequ(op, "rb"))
+		rotate(stack_b);
+	else if (ft_strequ(op, "rr"))
+		ra_rb(stack_a, stack_b);
+	else if (ft_strequ(op, "rra"))
+		rev_rotate(stack_a);
+	else if (ft_strequ(op, "rrb"))
+		rev_rotate(stack_b);
+	else if (ft_strequ(op, "rrr"))
+		rev_rotate_ab(stack_a, stack_b);
+	else if (ft_strequ(op, "pa"))
+		push(stack_a, pop(stack_b));
+	else if (ft_strequ(op, "pb"))
+		push(stack_b, pop(stack_a));
 	else
-	{
-		ft_putstr_fd("error\n", 2);
 		exit(1);
-	}	
 }

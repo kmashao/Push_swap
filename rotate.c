@@ -20,16 +20,20 @@ void    rotate(t_stack **stack)
 	first = NULL;
 	last = NULL;
 
+
 	if ((*stack) && (*stack)->next)
 	{
 		last = (*stack);
 		first = (*stack);
 		(*stack) = (*stack)->next;
+
 		while(last->next)
-			last = last->next;
+			last = last->next;	
+					;
+		last->next = first;	
 		first->next = NULL;
-		last->next = first;
 	}
+	print_stack(stack);
 }
 
 void    ra_rb(t_stack **stack_a, t_stack **stack_b)

@@ -44,11 +44,11 @@ void		del_stack(t_stack *stack)
 	}
 }
 
-void		print_stack(t_stack *stack)
+void		print_stack(t_stack **stack)
 {
 	t_stack		*node;
 
-	node = stack;
+	node = *stack;
 	while (node)
 	{
 		ft_putchar('[');
@@ -56,5 +56,5 @@ void		print_stack(t_stack *stack)
 		ft_putstr("]->");
 		node = node->next;
 	}
-	ft_putstr("NULL");
+	ft_putendl("NULL");
 }

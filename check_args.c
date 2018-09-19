@@ -53,17 +53,14 @@ int		is_max(int ac, char **av)
 
 int		sorted(t_stack *stack)
 {
-	t_stack *node1;
-	t_stack *node2;
+	t_stack *node;
 
-	node1 = stack;
-	node2 = stack->next;
-	while (node1)
+	node = stack;
+	while (node && node->next)
 	{
-		if (node1->num > node2->num)
+		if (node->num > node->next->num)
 			return (0);
-		node1 = node1->next;
-		node2 = node2->next;
+		node = node->next;
 	}
 	return (1);
 }
@@ -108,6 +105,4 @@ int		valid(int ac, char **av)
 	if (has_dup(ac, av))
 		return (0);
 	return (1);
-	
-
 }
