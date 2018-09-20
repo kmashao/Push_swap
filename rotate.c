@@ -33,7 +33,6 @@ void    rotate(t_stack **stack)
 		last->next = first;	
 		first->next = NULL;
 	}
-	print_stack(stack);
 }
 
 void    ra_rb(t_stack **stack_a, t_stack **stack_b)

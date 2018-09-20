@@ -54,7 +54,7 @@ void	push(t_stack **stack, t_stack *node)
 	}
 }
 
-void		do_op(char *op, t_stack **stack_a, t_stack **stack_b)
+void	do_op(char *op, t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_strequ(op, "sa"))
 		swap(stack_a);

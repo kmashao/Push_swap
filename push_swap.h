@@ -30,6 +30,7 @@ void    rev_rotate(t_stack **stack);
 void	rev_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 
 int		is_num(char *str);
+int		empty(char *str);
 int		sorted(t_stack *stack);
 int		has_dup(int ac, char **av);
 int		is_max(int ac, char **av);

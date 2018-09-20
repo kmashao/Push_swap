@@ -30,16 +30,28 @@ void	check_loop(int ac, char **av)
 			ft_putendl("Error");
 			exit (1);
 		}
-		
-			ft_putendl("before");
+		ft_putendl("before");
 		print_stack(&stack_a);
 		do_op(op, &stack_a, &stack_b);
-
-			ft_putendl("after");
+		ft_putendl("after");
 		print_stack(&stack_a);
 	}
 	(sorted(stack_a) && !stack_b) ? ft_putendl("OK") : ft_putendl("KO");
 	
+}
+
+int		empty(char *str)
+{
+	int i;
+	
+	i = 0;
+	if (!ft_strlen(str))
+		return (1);
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '\0')
+		return (1);
+	return(0);
 }
 
 int main(int ac, char **av)
@@ -49,7 +61,7 @@ int main(int ac, char **av)
 	str = NULL;
 	if (ac < 2)
 		exit (1);
-	if (ac == 2)
+	if (ac == 2 && !empty(av[1]))
 	{
 		str = ft_strjoin("checker ", av[1]);
 		av = ft_strsplit(str, ' ');
@@ -63,5 +75,5 @@ int main(int ac, char **av)
 		exit (1);
 	}
 	check_loop(ac, av);
-	return (0);
+	exit (1);
 }
