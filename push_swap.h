@@ -42,5 +42,6 @@ void	print_stack(t_stack **stack);
 void	do_op(char *op, t_stack **stack_a, t_stack **stack_b);
 
 int		check_ops(char *op);
+char	**get_values(int ac, char **av);
 
 #endif
