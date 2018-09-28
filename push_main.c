@@ -14,31 +14,23 @@
 
 int main(int ac, char **av)
 {
-    char    *str;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-    str = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
     if (ac < 2)
         exit(1);
-	if (ac == 2 && !empty(av[1]))
+	if (ac == 2 && empty(av[1]))
 	{
-		str = ft_strjoin("checker ", av[1]);
-		av = ft_strsplit(str, ' ');
-		ft_strdel(&str);
-		while (av[ac])
-			ac++;
+		ft_putendl("Error\n");
+		exit (1);
 	}
 	if (!valid(ac, av))
 	{
 		ft_putstr("Error\n");
 		exit (1);
 	}
-
-
-
-
-
-
-
-
-
+	stack_a = make_stack(ac, av);
+	exit (1);
 }

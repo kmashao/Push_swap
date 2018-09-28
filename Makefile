@@ -14,23 +14,23 @@
 
 NAME = checker
 
-LIBFT = ./libft/libft.a
+LIBFT = libft/libft.a
 
 COM = make -C libft/
 
-SOURCES =	utilities.c\
+SOURCES =	check_main.c\
 			check_args.c\
 			check_ops.c\
 			rotate.c\
 			swap_push.c\
-			check_main.c
+			utilities.c\
 
 FLAGS =		-Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(SOURCES)
-	make -C libft/
+	$(COM)
 	gcc $(FLAGS) -o $(NAME) $(SOURCES) $(LIBFT)
 
 clean:

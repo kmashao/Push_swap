@@ -40,6 +40,10 @@ t_stack	*make_stack(int ac, char **av);
 void	del_stack(t_stack *stack);
 void	print_stack(t_stack **stack);
 void	do_op(char *op, t_stack **stack_a, t_stack **stack_b);
+int		check_desc(t_stack **stack);
+void	sort_b(t_stack **stack_a, t_stack **stack_b);
+void	sort_a(t_stack **stack_a, t_stack **stack_b);
+void	sort_all(t_stack **stack_a, t_stack **stack_b);
 
 int		check_ops(char *op);
 char	**get_values(int ac, char **av);
