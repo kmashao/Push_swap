@@ -17,12 +17,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef	struct	s_list
+typedef	struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}				t_list;
+}					t_list;
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strnlen(const char *s, size_t maxlen);
@@ -87,4 +87,5 @@ int		ft_str_is_alpha(const char *s);
 int		ft_str_is_lowercase(const char *s);
 int		get_next_line(const int fd, char **line);
 char	**ft_strnew_two(size_t y_axis, size_t x_axis);
+void	ft_del_2D(char **arr);
 #endif

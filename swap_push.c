@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap && push.c                                     :+:      :+:    :+:   */
+/*   swap_push.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmashao <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/11 14:40:39 by kmashao           #+#    #+#             */
-/*   Updated: 2018/09/21 11:21:20 by kmashao          ###   ########.fr       */
-/*                        ck                                                    */
+/*   Created: 2018/09/28 08:15:48 by kmashao           #+#    #+#             */
+/*   Updated: 2018/09/28 08:15:51 by kmashao          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
@@ -78,6 +78,31 @@ void	do_op(char *op, t_stack **stack_a, t_stack **stack_b)
 		push(stack_a, pop(stack_b));
 	else if (ft_strequ(op, "pb"))
 		push(stack_b, pop(stack_a));
-	else
-		exit(1);
+	ft_putendl(op);
+}
+
+void	do_op_2(char *op, t_stack **stack_a, t_stack **stack_b)
+{
+	if (ft_strequ(op, "sa"))
+		swap(stack_a);
+	else if (ft_strequ(op, "sb"))
+		swap(stack_b);
+	else if (ft_strequ(op, "ss"))
+		sa_sb(stack_a, stack_b);
+	else if (ft_strequ(op, "ra"))
+		rotate(stack_a);
+	else if (ft_strequ(op, "rb"))
+		rotate(stack_b);
+	else if (ft_strequ(op, "rr"))
+		ra_rb(stack_a, stack_b);
+	else if (ft_strequ(op, "rra"))
+		rev_rotate(stack_a);
+	else if (ft_strequ(op, "rrb"))
+		rev_rotate(stack_b);
+	else if (ft_strequ(op, "rrr"))
+		rev_rotate_ab(stack_a, stack_b);
+	else if (ft_strequ(op, "pa"))
+		push(stack_a, pop(stack_b));
+	else if (ft_strequ(op, "pb"))
+		push(stack_b, pop(stack_a));
 }

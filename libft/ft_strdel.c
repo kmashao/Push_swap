@@ -14,5 +14,10 @@
 
 void	ft_strdel(char **p)
 {
-	ft_memdel((void *)p);
+	if (p && *p)
+	{
+		free(*p);
+		*p =NULL;
+		p = NULL;
+	}
 }

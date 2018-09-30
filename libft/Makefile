@@ -60,7 +60,8 @@ SOURCES =	ft_atoi.c \
 			ft_str_is_alpha.c \
 			ft_str_is_lowercase.c \
 			get_next_line.c \
-			ft_strnew_two.c
+			ft_strnew_two.c \
+			ft_del_2D.c
 
 
 OBJECTS =	ft_atoi.o \
@@ -125,7 +126,8 @@ OBJECTS =	ft_atoi.o \
 			ft_str_is_alpha.o \
 			ft_str_is_lowercase.o \
 			get_next_line.o \
-			ft_strnew_two.o
+			ft_strnew_two.o \
+			ft_del_2D.o
 
 
 NAME = libft.a

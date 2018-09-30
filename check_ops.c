@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmashao <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/19 14:16:32 by kmashao           #+#    #+#             */
-/*   Updated: 2018/09/19 14:16:34 by kmashao          ###   ########.fr       */
+/*   Created: 2018/09/28 08:14:14 by kmashao           #+#    #+#             */
+/*   Updated: 2018/09/28 08:14:31 by kmashao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int     check_ops(char *op)
 {
@@ -37,6 +36,5 @@ int     check_ops(char *op)
 		return (1);
 	if (ft_strequ(op, "pb"))
 		return (1);
-	return (0);
-	
+	return (0);	
 }

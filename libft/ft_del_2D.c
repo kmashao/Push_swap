@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_del_2D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmashao <kmashao@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmashao <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/29 08:40:45 by kmashao           #+#    #+#             */
-/*   Updated: 2018/06/15 17:02:15 by kmashao          ###   ########.fr       */
+/*   Created: 2018/09/30 15:28:36 by kmashao           #+#    #+#             */
+/*   Updated: 2018/09/30 15:28:43 by kmashao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *s)
+void       ft_del_2D(char **arr)
 {
-	size_t length;
+    int     i;
 
-	length = 0;
-	while (*s != '\0')
-	{
-		length++;
-		s++;
-	}
-	return (length);
+    i = 0;
+    if (arr && *arr)
+    {
+        while (arr[i])
+        {
+            free(arr[i]);
+            arr[i] = NULL;
+            i++;
+        }
+        arr = NULL;
+    }
 }

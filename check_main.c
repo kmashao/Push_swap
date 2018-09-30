@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmashao <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/18 16:05:39 by kmashao           #+#    #+#             */
-/*   Updated: 2018/09/18 16:06:09 by kmashao          ###   ########.fr       */
+/*   Created: 2018/09/28 08:13:48 by kmashao           #+#    #+#             */
+/*   Updated: 2018/09/28 08:13:53 by kmashao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,39 +22,22 @@ void	check_loop(int ac, char **av)
 	stack_b = NULL;
 	op = NULL;
 	stack_a = make_stack(ac, av);
-	print_stack(&stack_a);
 	while (get_next_line(0,&op) > 0)
 	{
 		if (check_ops(op) == 0)
 		{
 			ft_putendl("Error");
+			ft_strdel(&op);
 			exit (1);
 		}
-		ft_putendl("before");
-		print_stack(&stack_a);
-		do_op(op, &stack_a, &stack_b);
-		ft_putendl("after");
-		print_stack(&stack_a);
+		do_op_2(op, &stack_a, &stack_b);
+		ft_strdel(&op);
 	}
 	(sorted(stack_a) && !stack_b) ? ft_putendl("OK") : ft_putendl("KO");
 	
 }
 
-int		empty(char *str)
-{
-	int i;
-	
-	i = 0;
-	if (!ft_strlen(str))
-		return (1);
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '\0')
-		return (1);
-	return(0);
-}
-
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	char		*str;
 
@@ -72,8 +55,10 @@ int main(int ac, char **av)
 	if (!valid(ac, av))
 	{
 		ft_putstr("Error\n");
+		ft_del_2D(av);
 		exit (1);
 	}
 	check_loop(ac, av);
+	ft_del_2D(av);
 	exit (1);
 }

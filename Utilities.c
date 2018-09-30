@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Utilities.c                                        :+:      :+:    :+:   */
+/*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmashao <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/18 15:46:52 by kmashao           #+#    #+#             */
-/*   Updated: 2018/09/21 11:21:44 by kmashao          ###   ########.fr       */
+/*   Created: 2018/09/28 08:12:52 by kmashao           #+#    #+#             */
+/*   Updated: 2018/09/28 08:12:52 by kmashao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./push_swap.h"
 
 t_stack     *make_stack(int ac, char **av)
 {
@@ -30,36 +30,18 @@ t_stack     *make_stack(int ac, char **av)
 	return (stack);
 }
 
-void		del_stack(t_stack *stack)
+void		del_stack(t_stack **stack)
 {
 	t_stack		*terminator;
 
 	terminator = NULL;
-	while (stack)
+	while (*stack)
 	{
-		terminator = stack;
-		stack = stack->next;
+		terminator = *stack;
+		*stack = (*stack)->next;
 		terminator->next = NULL;
 		free(terminator);
 	}
-}
-
-char	**get_values(int ac, char **av)
-{
-	char **values;
-	char *str;
-
-	values = NULL;
-	str = NULL;
-	if (ac == 2 && !empty(av[1]))
-	{
-		str = ft_strjoin("checker ", av[1]);
-		values = ft_strsplit(str, ' ');
-		ft_strdel(&str);
-	}
-	else
-		values = av;
-	return (values);
 }
 
 void		print_stack(t_stack **stack)
@@ -75,4 +57,18 @@ void		print_stack(t_stack **stack)
 		node = node->next;
 	}
 	ft_putendl("NULL");
+}
+
+int		empty(char *str)
+{
+	int i;
+	
+	i = 0;
+	if (!ft_strlen(str))
+		return (1);
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '\0')
+		return (1);
+	return(0);
 }

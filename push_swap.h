@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmashao <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/11 09:12:16 by kmashao           #+#    #+#             */
-/*   Updated: 2018/09/11 09:12:18 by kmashao          ###   ########.fr       */
+/*   Created: 2018/09/28 08:16:51 by kmashao           #+#    #+#             */
+/*   Updated: 2018/09/28 08:16:53 by kmashao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ int		is_max(int ac, char **av);
 int		valid(int ac, char **av);
 
 t_stack	*make_stack(int ac, char **av);
-void	del_stack(t_stack *stack);
+void	del_stack(t_stack **stack);
 void	print_stack(t_stack **stack);
+void	do_op_2(char *op, t_stack **stack_a, t_stack **stack_b);
 void	do_op(char *op, t_stack **stack_a, t_stack **stack_b);
 int		check_desc(t_stack **stack);
 void	sort_b(t_stack **stack_a, t_stack **stack_b);

@@ -5,14 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kmashao <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/08/20 12:27:21 by kmashao           #+#    #+#              #
-#    Updated: 2018/09/21 11:21:54 by kmashao          ###   ########.fr        #
+#    Created: 2018/09/28 08:12:04 by kmashao           #+#    #+#              #
+#    Updated: 2018/09/28 08:12:21 by kmashao          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
 NAME = checker
+NAMES = push_swap
 
 LIBFT = libft/libft.a
 
@@ -23,21 +22,34 @@ SOURCES =	check_main.c\
 			check_ops.c\
 			rotate.c\
 			swap_push.c\
+			utilities.c
+
+SOURCESS =	push_main.c\
+			check_args.c\
+			check_ops.c\
+			rotate.c\
+			swap_push.c\
 			utilities.c\
+			sort.c
+
 
 FLAGS =		-Wall -Wextra -Werror
 
-all: $(NAME)
+all: $(NAME) $(NAMES)
 
 $(NAME): $(SOURCES)
 	$(COM)
 	gcc $(FLAGS) -o $(NAME) $(SOURCES) $(LIBFT)
 
+$(NAMES) : $(SOURCESS)
+	$(COM) 
+	gcc	$(FLAGS) -o $(NAMES) $(SOURCESS) $(LIBFT)
 clean:
 	make clean -C libft/
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAMES)
 
 re: fclean all
 
