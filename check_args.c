@@ -45,8 +45,9 @@ int		is_max(int ac, char **av)
 			ft_strdel(&num_str);
 			return (1);
 		}
+		ft_strdel(&num_str);
 	}
-	ft_strdel(&num_str);
+	num_str ? ft_strdel(&num_str) : 0;
 	return (0);
 }
 
