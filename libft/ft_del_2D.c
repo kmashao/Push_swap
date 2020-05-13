@@ -12,19 +12,35 @@
 
 #include "libft.h"
 
-void       ft_del_2D(char **arr)
-{
-    int     i;
+// void       ft_del_2D(char **arr)
+// {
+//     int     i;
 
-    i = 0;
-    if (arr && *arr)
-    {
-        while (arr[i])
-        {
-            free(arr[i]);
-            arr[i] = NULL;
-            i++;
-        }
-        arr = NULL;
-    }
+//     i = 0;
+//     if (arr && *arr)
+//     {
+//         while (arr[i])
+//         {
+//             free(arr[i]);
+//             arr[i] = NULL;
+//             i++;
+//         }
+//         arr = NULL;
+//     }
+// }
+
+void	ft_del_2D(char **strings)
+{
+	int		i;
+
+	i = 0;
+	if (!strings || !*strings)
+		return ;
+	while (strings[i])
+	{
+		ft_strdel(&strings[i]);
+		i++;
+	}
+	free(strings);
+	strings = NULL;
 }

@@ -29,12 +29,14 @@ void    ra_rb(t_stack **stack_a, t_stack **stack_b);
 void    rev_rotate(t_stack **stack);
 void	rev_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 
+int		check_args(int ac,char **av);
 int		is_num(char *str);
 int		empty(char *str);
 int		sorted(t_stack *stack);
-int		has_dup(int ac, char **av);
-int		is_max(int ac, char **av);
-int		valid(int ac, char **av);
+int		has_dup(char **av);
+char	**split_args(int ac, char **args);
+int		exceeds_max(char *av);
+int		valid(char **av);
 
 t_stack	*make_stack(int ac, char **av);
 void	del_stack(t_stack **stack);
@@ -47,6 +49,6 @@ void	sort_a(t_stack **stack_a, t_stack **stack_b);
 void	sort_all(t_stack **stack_a, t_stack **stack_b);
 
 int		check_ops(char *op);
-char	**get_values(int ac, char **av);
+t_stack	*get_stack(int ac, char **av);
 
 #endif

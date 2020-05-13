@@ -12,97 +12,69 @@
 
 #include "push_swap.h"
 
-int		has_dup(int ac, char **av)
-{
-	int i;
-	int j;
+int		check_args(int ac,char **av){
 
-	i = 1;
-	while (i < ac - 1)
+	char *str;
+	char **values;
+
+	str = NULL;
+	values = NULL;
+	if(ac == 2 && ft_strlen(av[1]) && !ft_skip_spaces(av[1]))
 	{
-		j = i + 1;
-		while (j < ac)
-		{
-			if (ft_atoi(av[j]) == ft_atoi(av[i]))
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int		is_max(int ac, char **av)
-{
-	char	*num_str;
-
-	num_str = NULL;
-	while (--ac >= 1)
-	{
-		num_str = ft_itoa(ft_atoi(av[ac]));
-		if (ft_strcmp(num_str, av[ac]))
-		{
-			ft_strdel(&num_str);
-			return (1);
-		}
-		ft_strdel(&num_str);
-	}
-	num_str ? ft_strdel(&num_str) : 0;
-	return (0);
-}
-
-int		sorted(t_stack *stack)
-{
-	t_stack *node;
-
-	node = stack;
-	while (node && node->next)
-	{
-		if (node->num > node->next->num)
+		if(!(str = ft_strjoin("args ", av[1])))
 			return (0);
-		node = node->next;
+		values = ft_strsplit(str, ' ');
+		if(!(valid(values)))
+		{
+			ft_del_2D(values);
+			ft_strdel(&str);
+			return (0);
+		}
+		else
+		{
+			ft_del_2D(values);
+			ft_strdel(&str);
+			return(1);
+		}	
 	}
-	return (1);
-}
-
-int		is_num(char *str)
-{
-	int i;
+	else
+	{
+		return (valid(av) ? 1 : 0);
+	}
 	
-	i = 0;
-	if (!ft_strlen(str))
-		return (0);
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '\0')
-		return (0);
-	if ((str[i] == '-' || str[i] == '+') && !ft_isdigit(str[i + 1]))
-		return (0);
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
-int		valid(int ac, char **av)
+char		**split_args(int ac, char **args)
 {
-	int		i;
+	char	**values;
+	char	*str;
 
-	i = 1;
-	while (i < ac)
+	values = NULL;
+	str = NULL;
+	if (ac == 2)
 	{
-		if (!is_num(av[i]))
-			return (0);
-		i++;
+		str = ft_strjoin("args ", args[1]);
+		values = ft_strsplit(str, ' ');
+		ft_strdel(&str);
 	}
-	if (is_max(ac, av))
-		return (0);
-	if (has_dup(ac, av))
+	else
+		values = args;
+	return (values);
+}
+
+int		valid(char **av)
+{
+	int		index;
+
+	index = 1;
+	while(av[index])
+		index++;
+	while (--index >= 1)
+	{
+		if (!is_num(av[index]) || exceeds_max(av[index]))
+			return (0);
+	}
+	if (has_dup(av))
 		return (0);
 	return (1);
 }

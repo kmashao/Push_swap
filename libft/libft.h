@@ -88,4 +88,5 @@ int		ft_str_is_lowercase(const char *s);
 int		get_next_line(const int fd, char **line);
 char	**ft_strnew_two(size_t y_axis, size_t x_axis);
 void	ft_del_2D(char **arr);
+int		ft_skip_spaces(char *str);
 #endif
